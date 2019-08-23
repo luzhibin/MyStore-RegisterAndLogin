@@ -14,7 +14,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import domain.user;
-import jdbcUtil.JDBCUtil;
+import jdbcUtils.JDBCUtils;
 
 /**
  * Servlet implementation class LoginServlet
@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 		String pwd = request.getParameter("password");
 		System.out.println(name+"|密码："+pwd);
 		//到数据库中查询有没有该用户
-		QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select * from user where username=? and password=?";
 		user u = null;
 		try {

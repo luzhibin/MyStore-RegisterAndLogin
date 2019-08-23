@@ -17,7 +17,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 
 import domain.user;
-import jdbcUtil.JDBCUtil;
+import jdbcUtils.JDBCUtils;
 
 
 @WebServlet("/RegistServlet")
@@ -65,7 +65,7 @@ public class RegistServlet extends HttpServlet {
 			//3.设置uid
 			u.setUid(UUID.randomUUID().toString());
 			//4.写入数据库
-			QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+			QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 			String sql="insert into user value(?,?,?,?)";
 			try {
 				qr.update(sql,u.getUid(),u.getUsername(),u.getPassword(),u.getPhone());

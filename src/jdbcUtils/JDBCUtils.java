@@ -1,4 +1,4 @@
- package jdbcUtil;
+ package jdbcUtils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -10,14 +10,14 @@ import javax.sql.DataSource;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
-public class JDBCUtil {
-	private JDBCUtil(){}
+public class JDBCUtils {
+	private JDBCUtils(){}
 	public static DataSource ds = null;
 	static {// 只加载一次驱动就够了，为了保证代码只执行一次，使用静态代码块：当类加载的时候就会执行里面的内容
 		try {
 			//1.加载配置文件
 			Properties p = new Properties();
-			String path = JDBCUtil.class.getClassLoader().getResource("db.properties").getPath();
+			String path = JDBCUtils.class.getClassLoader().getResource("db.properties").getPath();
 			FileInputStream in = new FileInputStream(path);
 			p.load(in);
 			ds = DruidDataSourceFactory.createDataSource(p);
