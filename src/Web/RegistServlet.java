@@ -43,6 +43,7 @@ public class RegistServlet extends HttpServlet {
 		//获取服务器生成的验证码
 		String word = (String) this.getServletContext().getAttribute("checkCode");
 		//判断输入的验证
+		System.out.println(word);
 		if (code.equals(word)) {
 			//如果正确
 			//1.接收所有参数
@@ -74,11 +75,12 @@ public class RegistServlet extends HttpServlet {
 			}
 			//跳转到登录页面
 			response.getWriter().write("注册成功");
-			response.setHeader("refresh", "3,url=/Mystore-RegisterAndLogin/login.jsp");
+			response.sendRedirect("/Mystore-RegisterAndLogin/login.jsp");
 		} else {
 			//不正确，用户验证码错误，跳转回注册页
 			response.getWriter().write("验证码错误");
-			response.setHeader("refresh", "3;url=/Mystore-RegisterAndLogin/regist.jsp");
+			response.sendRedirect("/Mystore-RegisterAndLogin/regist.jsp");
+			//response.setHeader("refresh", "3;url=/Mystore-RegisterAndLogin/regist.jsp");
 		}
 	}
 

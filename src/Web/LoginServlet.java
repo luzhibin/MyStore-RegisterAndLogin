@@ -45,11 +45,11 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user",u); 
 			//跳转到主页面
-			response.setHeader("refresh", "3,url=/Mystore-RegisterAndLogin/index.jsp");
+			response.sendRedirect("/Mystore-RegisterAndLogin/index.jsp");
 		}else {
 			response.getWriter().write("登录失败");
 			//跳转回注册页面
-			response.setHeader("refresh", "3,url=/Mystore-RegisterAndLogin/login.jsp");
+			response.sendRedirect("/Mystore-RegisterAndLogin/login.jsp");
 		}
 	}
 }
